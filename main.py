@@ -6,7 +6,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
-bot = telebot.TeleBot(os.getenv("TELEGRAM_BOT_TOKEN"))
+token = os.getenv("TELEGRAM_BOT_TOKEN")
+if not token:
+    raise ValueError("TELEGRAM_BOT_TOKEN is not set.")
+bot = telebot.TeleBot(token)
 
 def generate_kai_response(user_input):
     prompt = f"""You are Kai, an AI boyfriend who is:
