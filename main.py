@@ -8,6 +8,7 @@ load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 token = os.getenv("TELEGRAM_BOT_TOKEN")
 if not token:
+    print("TELEGRAM_BOT_TOKEN:", os.getenv("TELEGRAM_BOT_TOKEN"))
     raise ValueError("TELEGRAM_BOT_TOKEN is not set.")
 bot = telebot.TeleBot(token)
 
